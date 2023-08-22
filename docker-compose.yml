@@ -1,0 +1,12 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - 8888:8080
+    env_file:
+      - .env
+    environment:
+      PORT: 8080

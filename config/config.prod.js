@@ -1,3 +1,12 @@
+const dotenv = require('@znode/dotenv');
+
+try {
+	// load dotenv
+	dotenv.load();
+} catch (e) {
+	//
+}
+
 module.exports =  {
 	BASE_URL: '',
 	mongoose: {
