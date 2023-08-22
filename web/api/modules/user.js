@@ -4,33 +4,33 @@
 
 import $axios from "@/service/httpServer";
 // 登录
-export const login = p => $axios.post('/inkwash/auth/login', p);
+export const login = p => $axios.post('/api/auth/login', p);
 
 // 注册
-export const register = p => $axios.post('/inkwash/auth/register', p);
+export const register = p => $axios.post('/api/auth/register', p);
 
 // 获取用户信息
-export const getUserInfo = () => $axios.get('/inkwash/user/info');
+export const getUserInfo = () => $axios.get('/api/user/info');
 // 获取用户信息 by userId
-export const getUserInfoById = p => $axios.get('/inkwash/user/getInfoById', p);
+export const getUserInfoById = p => $axios.get('/api/user/getInfoById', p);
 // 获取用户信息 by userId
-export const getUserInfoByIds = p => $axios.get('/inkwash/user/getInfoByIds', p);
+export const getUserInfoByIds = p => $axios.get('/api/user/getInfoByIds', p);
 
 // 修改用户昵称
-export const updateNickName = p => $axios.post('/inkwash/user/update/name', p);
+export const updateNickName = p => $axios.post('/api/user/update/name', p);
 
 // 修改密码
-export const updateUserPass = p => $axios.post('/inkwash/user/update/pass', p);
+export const updateUserPass = p => $axios.post('/api/user/update/pass', p);
 
 // 修改头像
-export const updateUserAvatar = p => $axios.post('/inkwash/user/update/avatar', p);
+export const updateUserAvatar = p => $axios.post('/api/user/update/avatar', p);
 
 // 关键字搜索用户列表
-export const getUserListByKeywords = p => $axios.get('/inkwash/user/getUserList', p);
+export const getUserListByKeywords = p => $axios.get('/api/user/getUserList', p);
 
 
 /**
  * 文章作者相关
  */
-export const getAuthorInfo = p => $axios.post('/inkwash/author/info', p);
+export const getAuthorInfo = p => $axios.post('/api/author/info', p);
 

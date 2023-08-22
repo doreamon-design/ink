@@ -59,7 +59,7 @@
 		},
 		computed: {
 			isLogined(){
-				return this.$store.state.user.access_token
+				return this.$store.state.user.userInfo || {}
       },
 			userData() {
 				return this.$store.state.user.userInfo || {}

@@ -99,10 +99,12 @@
 						},
 					}
 				};
+
 				Spreadsheet.locale('zh-cn', zhCN);
 				this.editor = new Spreadsheet(document.getElementById('excel-edit'), options)
 				this.editor.validate()
-				this.editor.setContent(this.content);
+				// this.editor.setContent(this.content);
+				this.editor.loadData(JSON.parse(this.content));
 			},
 			/**
 			 * 设置编辑器内容

@@ -26,6 +26,10 @@ module.exports = {
 	},
 	// 获取用户信息
 	async getUserData() {
+		if (!!this.request.user) {
+			return this.request.user;
+		}
+
 		var token = this.headers.authorization ? this.headers.authorization : '';
 		token = token.substring(7) //把Bearer 截取掉，解析的时候不需要加上Bearer
 		let user = {}

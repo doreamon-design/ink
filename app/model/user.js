@@ -9,7 +9,7 @@ module.exports = app => {
 			type: String,
 			required: [true, 'username不能为空'],
 			minlength: [2, '用户名长度不能小于2'],
-			maxlength: [16, '用户名长度不能大于16'],
+			maxlength: [32, '用户名长度不能大于32'],
 		},
 		password: {
 			type: String,

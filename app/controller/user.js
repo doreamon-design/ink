@@ -9,7 +9,8 @@ class UserController extends Controller {
 	 */
 	async getUserInfo() {
 		let {ctx} = this;
-		ctx.returnBody(true, this.ctx.getUser())
+		// ctx.returnBody(true, ctx.getUser())
+		ctx.returnBody(true, ctx.request.user)
 	}
 
 	/**

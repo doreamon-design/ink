@@ -10,13 +10,14 @@ class UserService extends Service {
 	 * @param options
 	 * @returns {Promise<void>}
 	 */
-	async createUser(username, password, email, name) {
+	async createUser(username, password, email, name, avatar) {
 		const {ctx} = this;
 		await ctx.model.User.create({
 			username: username,
 			password: password,
 			email: email,
 			name: name || username,
+			avatar: avatar || '',
 		});
 		const query = {username: {$in: username}};
 		return ctx.model.User.findOne(query, selectUserKey).exec();
@@ -87,6 +88,30 @@ class UserService extends Service {
 			return null;
 		}
 		return ctx.model.User.findOne({ _id: id }, selectUserKey).exec();
+	}
+	/**
+ * 根据用户名，查找用户
+ * @param {String} id 用户ID
+ * @return {Promise[user]} 承载用户的 Promise 对象
+ */
+	async getUserByUsername(username) {
+		const { ctx } = this;
+		if (!username) {
+			return null;
+		}
+		return ctx.model.User.findOne({ username: username }, selectUserKey).exec();
+	}
+	/**
+ * 根据用户邮箱，查找用户
+ * @param {String} id 用户ID
+ * @return {Promise[user]} 承载用户的 Promise 对象
+ */
+	async getUserByEmail(email) {
+		const { ctx } = this;
+		if (!email) {
+			return null;
+		}
+		return ctx.model.User.findOne({ email: email }, selectUserKey).exec();
 	}
 	/**
    * 根据用户ID列表，获取一组用户

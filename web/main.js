@@ -45,8 +45,17 @@ Vue.config.productionTip = false
 
 store.commit('UPDATE_USER_FROM_LOCAL')
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+API
+  .getUserInfo()
+  .then(res => {
+    store.commit('UPDATE_USER_INFO', res.body || {});
+  })
+  .then(() => {
+    new Vue({
+      router,
+      store,
+      render: h => h(App)
+    }).$mount('#app')
+  });
+
+

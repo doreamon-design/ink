@@ -28,7 +28,18 @@ class AuthController extends Controller {
 		let userDataStr = JSON.parse(JSON.stringify(user));
 		// 生成token
 		let token =await ctx.getToken(userDataStr);
+		ctx.session.accesstoken = token;
 		ctx.returnBody(true, {access_token: token, userInfo: user}, "登录成功!")
+	}
+
+	/**
+	* 登出
+	* @returns {Promise<void>}
+	*/
+	async logout() {
+		const { ctx } = this;
+		ctx.session.accesstoken = null;
+		ctx.returnBody(true, null, "登出成功!", 200);
 	}
 
 	/**
@@ -67,8 +78,26 @@ class AuthController extends Controller {
 		userData = userData.toObject();
 		let userDataStr = JSON.parse(JSON.stringify(userData));
 		// 生成token
-		let token =await ctx.getToken(userDataStr);
+		let token = await ctx.getToken(userDataStr);
+		ctx.session.accesstoken = token;
 		ctx.returnBody(true, {access_token: token, userInfo: userData}, "注册成功!")
+	}
+
+	/**
+ * 当前用户
+ * @returns {Promise<void>}
+ */
+	async user() {
+		const { ctx } = this;
+		const accesstoken = ctx.session.accesstoken;
+		if (!accesstoken) {
+			ctx.returnBody(false, {}, "用户未登录", 401);
+			return;
+		}
+
+		// const user = await ctx.service.user.getUsersByUsername(username);
+		const user = await ctx.checkToken(accesstoken);
+		ctx.returnBody(true, user, "获取成功!")
 	}
 }
 

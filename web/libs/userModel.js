@@ -16,7 +16,7 @@ let userModel = {
 	 */
 	async checkLoginState() {
 		let userData = store.state.user;
-		return !!userData.access_token
+		return !!userData.userInfo
 	},
 	/**
 	 * 登录
