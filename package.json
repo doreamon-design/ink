@@ -1,10 +1,29 @@
 {
   "name": "ink-wash-docs",
-  "version": "1.0.0",
-  "description": "水墨文档",
+  "version": "1.0.1",
   "private": true,
-  "egg": {
-    "declarations": true
+  "description": "水墨文档",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "license": "MIT",
+  "author": "1240413812@qq.com",
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=egg-server-ink-wash-docs --port ${PORT:-7001}",
+    "stop": "egg-scripts stop --title=egg-server-ink-wash-docs",
+    "serve": "egg-scripts start --no-daemon --title=egg-server-ink-wash-docs --port ${PORT:-7001}",
+    "dev": "egg-bin dev",
+    "debug": "egg-bin debug",
+    "test": "npm run lint -- --fix && npm run test-local",
+    "test-local": "egg-bin test",
+    "cov": "egg-bin cov",
+    "lint": "eslint .",
+    "ci": "npm run lint && npm run cov",
+    "autod": "autod",
+    "dev-web": "PORT=8000 vue-cli-service serve",
+    "build-web": "vue-cli-service build",
+    "copy-web-html": "node move-web-file.js"
   },
   "dependencies": {
     "@znode/connect": "^0.0.4",
@@ -54,29 +73,10 @@
   "engines": {
     "node": ">=10.0.0"
   },
-  "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-ink-wash-docs --port ${PORT:-7001}",
-    "stop": "egg-scripts stop --title=egg-server-ink-wash-docs",
-    "serve": "egg-scripts start --no-daemon --title=egg-server-ink-wash-docs --port ${PORT:-7001}",
-    "dev": "egg-bin dev",
-    "debug": "egg-bin debug",
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
-    "autod": "autod",
-    "dev-web": "PORT=8000 vue-cli-service serve",
-    "build-web": "vue-cli-service build",
-    "copy-web-html": "node move-web-file.js"
+  "egg": {
+    "declarations": true
   },
   "ci": {
     "version": "10"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "1240413812@qq.com",
-  "license": "MIT"
+  }
 }
